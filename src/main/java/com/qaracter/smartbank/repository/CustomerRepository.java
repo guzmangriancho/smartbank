@@ -28,4 +28,8 @@ public class CustomerRepository {
     public Customer findById(Long id) {
         return customers.get(id);
     }
+
+    public void deleteById(Long id) {
+        customers.remove(id);
+    }
 }

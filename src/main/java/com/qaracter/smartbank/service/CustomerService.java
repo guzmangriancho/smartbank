@@ -26,4 +26,19 @@ public class CustomerService {
         if (customer == null) throw new CustomerNotFoundException("Customer not found");
         return customer;
     }
+
+    public Customer updateCustomer(Long id, Customer updatedData) {
+        Customer existingCustomer = getById(id);
+
+        existingCustomer.setFullName(updatedData.getFullName());
+        existingCustomer.setEmail(updatedData.getEmail());
+        existingCustomer.setPhoneNumber(updatedData.getPhoneNumber());
+
+        return repo.save(existingCustomer);
+    }
+
+    public void deleteCustomer(Long id) {
+        getById(id);
+        repo.deleteById(id);
+    }
 }
